@@ -1,0 +1,73 @@
+---
+title       : The Central Limit Theorem
+subtitle    : A simple demonstration
+author      : PWP11
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Motivation
+
+The **Central Limit Theorem** is one of the two fundamental theorems of probability (the other one is the **Law of Large Numbers**).
+
+Roughly, the Central Limit Theorem states that the distribution of the mean of a large number of independent, identically distributed variables will be approximately normal, regardless of the underlying distribution. 
+
+This is important because it is the reason that many statistical procedures work.
+
+This application seeks to facilitate an understanding of the Central Limit Theorem by allowing students to investigate 4 different distributions and see that as they generate more samples ("trials"), the distribution of the means of those samples looks approximately normal.
+
+---
+
+## The 4 distributions
+
+The four distributions students can investigate are shown below.  Each histogram is created using a population size of 500 (but students can try varying this from 100 to 1000).
+
+```{r,echo=FALSE}
+set.seed(12345)
+par(mfrow=c(2,2))
+hist(rnorm(500,mean=0,sd=1),main="Normal distribution",xlab="x")
+hist(runif(500,min=-0.5,max=0.5),main="Uniform distribution",xlab="x")
+hist(rexp(500,rate=1),main="Exponential distribution",xlab="x")
+hist(rpois(500,lambda=1),main="Poisson distribution",breaks=5,xlab="x")
+```
+
+---
+## Sample means
+
+Students can observe that, for each distribution, the sample mean is distributed (roughly) normally, particularly when the number of samples and the population size are large.
+
+```{r,echo=FALSE}
+normsamples <- rnorm(250000,mean=1,sd=1)
+dim(normsamples) <- c(500,500)
+normxbar <- colMeans(normsamples)
+unifsamples <- runif(250000,min=1-sqrt(12),max=1+sqrt(12))
+dim(unifsamples) <- c(500,500)
+unifxbar <- colMeans(unifsamples)
+expsamples <- rexp(250000,rate=1)
+dim(expsamples) <- c(500,500)
+expxbar <- colMeans(expsamples)
+poissamples <- rpois(250000,lambda=1)
+dim(poissamples) <- c(500,500)
+poisxbar <- colMeans(poissamples)
+
+par(mfrow=c(2,2))
+hist(normxbar,main="Sample mean for normal samples",xlab="xbar")
+hist(unifxbar,main="Sample mean for uniform samples",xlab="xbar")
+hist(expxbar,main="Sample mean for exponential samples",xlab="xbar")
+hist(poisxbar,main="Sample mean for Poisson samples",xlab="xbar")
+```
+
+---
+
+## Conclusion
+
+The Central Limit Theorem is an important result.  This application enables students to experiment with different distributions, population sizes and numbers of trials to develop an intuitive understanding of the result.
+
+
+
+
