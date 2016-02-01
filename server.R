@@ -30,4 +30,5 @@ draw <- function(distribution,trials,pop){
 shinyServer(
   function(input, output){
   output$hist <- renderPlot({draw(input$distribution,input$trials,input$pop)})
+  output$documentation <- renderText({readLines("documentation.html")})
   })
