@@ -1,5 +1,12 @@
 library(shiny)
 
+shinyUI(navbarPage("Central Limit Theorem Demo",
+                   tabPanel("Documentation", fluidPage(
+                     htmlOutput('documentation')
+                   )),
+                   
+                   tabPanel("App", fluidPage(
+
 shinyUI(pageWithSidebar(
   headerPanel("Exploring the Central Limit Theorem"),
   
@@ -34,3 +41,5 @@ shinyUI(pageWithSidebar(
     "Try changing the distribution and varying the number of trials and population size."
     )
 ))
+
+))))
