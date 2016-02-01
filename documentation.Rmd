@@ -1,0 +1,32 @@
+---
+title: "Documentation"
+author: "PWP11"
+date: "31 January 2016"
+output: html_document
+---
+##User instructions
+
+Choose the "App" tab (above).
+
+Select a distribution: Normal, Uniform, Exponential or Poisson - default is Normal.
+
+Select the number of trials (samples) - default is 500.
+
+Select the population size - default is 500.
+
+Hit "Submit" button.
+
+##Notes
+The parameters used for the distributions were selected to produce a mean and standard deviation of 1, to make it easier for students to compare the sample mean distributions.
+
+Normal distribution: mean=1, standard deviation=1.
+
+Uniform distribution: min=1-$\sqrt{12}$, max=1+$\sqrt{12}$.
+
+Exponential distribution: rate=1.
+
+Poission distribution: $\lambda$=1.
+
+##github location
+The ui.R and server.R files can be found at the following location:
+<https://github.com/PWP11/Data-Products-Assignment>
